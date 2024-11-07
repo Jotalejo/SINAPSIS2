@@ -1,0 +1,297 @@
+{% extends 'layoutj_3TH.html.' %}
+{% block title %}:: SINAPSIS V 2.0 :: Direccionamiento Estratégico{% endblock %}
+{% block head %}
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Plan de Desarrollo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+    </style>
+{{ super() }}
+
+{% endblock %}
+
+<body class="font-opensans">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+    </div>
+</div>
+
+{% block content %}
+
+<h1 style="margin-left: 18px;">Marco Filosófico</h1>
+
+<form action="/add_ValorI" method="POST">
+
+    <div class="form-section">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12 col-lg-6 col-xl-3">
+                    <div class="card">
+                        <h2 style="font-size: x-large;">Direccionamiento Estratégico</h2>
+                        <label for="mision">Misión</label>
+                        <textarea id="mision" name="mision" rows="3"></textarea>
+                        <label for="vision">Visión</label>
+                        <textarea id="vision" name="vision" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="card-body" >
+                    <div id="wizard_horizontal">
+                        <h2 >Valores</h2>
+                        <section>
+                            <div class="container-fluid">
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Valores Institucionales</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group" style="display:block;" id="val1">
+                                                    <textarea class="form-control" rows="1" placeholder="Título del valor" name="titv" id="titv" required></textarea>
+                                                    <textarea class="form-control" rows="3" cols="40" placeholder="Descripción del Valor" name="desv" id="desv" required></textarea>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group" id="valorj">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" id="kusaj" class="btn btn-success" onclick="return otrodato('#valorj','Título del valor','Descripción del Valor');"><i class="fa fa-plus"></i> Agrega Valor</button>
+                                                <br><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <h2>Políticas</h2>
+                        <section>
+                            <div class="container-fluid">
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Políticas Institucionales</h3>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="form-group" style="display:block;" id="polit1">
+                                                    <textarea class="form-control" rows="1" placeholder="Nombre" required></textarea>
+                                                    <textarea class="form-control" rows="3" cols="40" placeholder="Título de la política" required></textarea>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group" id="valork">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" id="kusak" class="btn btn-success" onclick="return otrodato('#valork','Nombre','Título de la política');"><i class="fa fa-plus"></i> Agrega Política</button>
+                                                <br><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <h2>Principios</h2>
+                        <section>
+                            <div class="container-fluid">
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Principios Institucionales</h3>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="form-group" style="display:block;" id="ppio1">
+                                                    <textarea class="form-control" rows="1" placeholder="Nombre" required></textarea>
+                                                    <textarea class="form-control" rows="3" cols="40" placeholder="Título del principio" required></textarea>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group" id="valorl">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" id="kusal" class="btn btn-success" onclick="return otrodato('#valorl','Nombre','Título del principio');"><i class="fa fa-plus"></i> Agrega Principio</button>
+                                                <br><br>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Objetivos</h2>
+        <textarea id="objetivos" name="objetivos" rows="3"></textarea>
+    </div>
+
+    <div class="form-section">
+        <h2>Estrategias</h2>
+        <textarea id="estrategias" name="estrategias" rows="3"></textarea>
+    </div>
+
+    <div class="form-section">
+        <h2>Planes</h2>
+        <label for="responsable">Responsable</label>
+        <input type="text" id="responsable" name="responsable">
+
+        <label for="tiempo">Tiempo</label>
+        <input type="text" id="tiempo" name="tiempo">
+    </div>
+
+    <div class="form-section">
+        <h2>Programas</h2>
+        <textarea id="programas" name="programas" rows="3"></textarea>
+    </div>
+
+    <div class="form-section">
+        <h2>Proyectos</h2>
+        <textarea id="proyectos" name="proyectos" rows="3"></textarea>
+    </div>
+
+    <div class="form-section">
+        <h2>Meta</h2>
+        <textarea id="meta" name="meta" rows="3"></textarea>
+    </div>
+
+    <div class="form-section">
+        <h2>Indicador</h2>
+        <textarea id="indicador" name="indicador" rows="3"></textarea>
+    </div>
+
+    <input type="submit" value="Enviar">
+
+</form>
+
+<!-- JOTALEJO - Almacen de SCRIPTS para pasar a libreria .js -->
+
+<!-- Agregar un par de cajas para capturar datos y borrarlas -->
+
+    <script>
+        var arrCausas =  new Array();
+        var arrCausas1 =  new Array();
+        
+        function otrodato(eltags,dainic,datotro) {                                
+            const tar = document.createElement('textarea');					
+            tar.className = 'form-control';
+            var aleatj = Math.floor(Math.random() * (100 - 1)) + 1
+            var nomtex = 'identc'+aleatj;
+            tar.name = nomtex;
+            tar.id = nomtex;
+
+            tar.placeholder = dainic;
+            tar.rows = '1';
+            tar.cols= '96';
+            document.querySelector(eltags).append(tar);
+            arrCausas[arrCausas.length] = nomtex;
+            
+            const tarja = document.createElement('textarea');
+            tarja.className = 'form-control';            
+            var nomtex1 = 'idenfuen'+aleatj;
+            tarja.name = nomtex1;
+            tarja.id = nomtex1;
+            tarja.placeholder = datotro;
+            tarja.rows = '3';
+            tarja.cols= '96';
+            document.querySelector(eltags).append(tarja);
+            arrCausas1[arrCausas1.length] = nomtex1;
+            
+            const but = document.createElement('button');
+            but.className = 'btn btn-success';
+            var nombot = 'butt'+aleatj;
+            but.name = nombot;
+            but.id = nombot;
+            var nombot1 = 'butt'+aleatj;
+            var nomtexA1 = 'identc'+aleatj;
+            var nomtexA2 = 'idenfuen'+aleatj;
+            document.querySelector(eltags).append(but);
+
+            var onkl1 = 'return vuelacausa(';
+            var onkl2 = onkl1+"'#"+nomtexA1+"','#"+nombot1+"','#"+nomtexA2+"');";
+            var botoncito = document.getElementById(nombot1);
+            botoncito.onclick = function() {
+                return vuelacausa('#'+nomtexA1 , '#'+nombot1 , '#'+nomtexA2 );
+            }					
+            
+            butmasi = "#"+nombot1;
+            const masi = document.createElement('i');
+            masi.className='fa fa-trash';
+            document.querySelector(butmasi).append(masi);            
+            
+            return false;
+        }
+    </script>
+
+    <!-- Permite eliminar los TextAreas creados -->
+    <script>
+        function vuelacausa(eltextA, elbutT, elSelC) {					
+            var divRemove = document.querySelector(eltextA);
+            divRemove.remove();
+            var iRemove = document.querySelector(elbutT);
+            iRemove.remove();
+            var selRemove = document.querySelector(elSelC);
+            selRemove.remove();
+                                
+            let eltextAvo = eltextA.slice(1);					
+            var lacaufly = (element) => element === eltextAvo;
+            var indcaufly = arrCausas.findIndex(lacaufly);
+            arrCausas.splice(indcaufly, 1);
+
+            let elselAvo = elSelC.slice(1);					
+            var elselfly = (element) => element === elselAvo;
+            var indselfly = arrCausas1.findIndex(elselfly);
+            arrCausas1.splice(indselfly, 1);
+            
+            return false;
+        }
+    </script>
+
+{{ super() }}
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- <a href="javascript:window.open('http://index.html/','','width=600,height=400,left=50,top=50,toolbar=yes');void 0">T-RISK</a><br /> -->
+	<!-- <a href="http://index.html" target="_blank">T-RISK</a> -->
+	<!-- <input type="button" value="Nueva ventana" onclick="javascript:window.open('http://jotalejo.com/','','width=600,height=400,left=50,top=50,toolbar=yes');" /> -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
+	<meta name="author" content="Bootlab">
+
+	<title>SINAPSIS V 2.0 &amp; JOTALEJO</title>
+	<link rel="icon" href="{{url_for('static', filename='/img/avatars/Ic_Sinap_sf.png')}}">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='/img/favicons/sinap_favicon-32x32_sf.png')}}">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="preconnect" href="//fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/classic.css')}}">
+</head>
+
+<body style="background-color: aliceblue;">
+
+	<nav class="navbar navbar-expand navbar-dark navbar-landing">
+		
+
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item active d-none d-md-inline-block">
+				<!-- <a class="nav-link" onclick="javascript:window.open('/signj','','width=600,height=600,left=50,top=50,toolbar=yes');" target="_blank">SIRE V 1.0</a> -->
+				<a class="nav-link" href="/signja">SINAPSIS V 2.0</a>
+			</li>			
+			<li class="nav-item active d-none d-md-inline-block">
+				<a class="nav-link" href="mailto:soporte@selectiva.net.co" target="_blank">Soporte</a>
+			</li>
+			<li class="nav-item active">
+				<!-- <a class="nav-link" onclick="javascript:window.open('/intro','','width=600,height=600,left=50,top=50,toolbar=yes');" target="_blank">Información</a> -->
+				<a class="nav-link" href="/intro">Información</a>
+			</li>
+
+		</ul>
+		<a href="https://www.selectiva.net.co/" target="_blank" class="btn btn-primary my-2 my-sm-0 ml-2">Contratación</a>
+	</nav>
+	
+	<section class="landing-intro pt-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-11 col-lg-9 col-xl-12 mx-auto">
+					<div class="row">
+						<div class="col-xl-6">		
+							<img src="{{url_for('static', filename='/img/avatars/logo_fdo_gris_SELECTIVA.png')}}" alt="T-Risk" class="circle" width="471" height="153"/>
+
+							<h1 class="text-white font-weight-normal my-4">SINAPSIS SOFTWARE EMPRESARIAL</h1>
+
+							<p style=text-align:justify class="text-muted lead"> Nuestra plataforma digital especializada permite a 
+								las organizaciones gestionar de manera inteligente 
+								sus procesos de cara a la implementación de 
+								programas de calidad, robusteciendo todos los 
+								elementos requeridos para el éxito corporativo. 
+								Contribuye al cumplimiento de la normatividad 
+								vigente dentro de un marco de actualización 
+								continua.</p>
+							<p style=text-align:justify class="text-muted lead">
+								El sistema es completamente modular, por lo tanto
+								usted podrá contratar lo que necesite o solicitar
+								un desarrollo a la medida de sus necesidades.</p>					
+							<div class="my-4">
+								<a target="_blank" href="dashboard-analytics.html" class="btn btn-light btn-lg mr-1">Demo</a>
+								<a href="https://www.selectiva.net.co/" target="_blank" class="btn btn-outline-light btn-lg">Contratación</a>
+							</div>
+
+							<div class="my-5">
+								<div class="d-inline-block mr-3">
+									<h2 class="text-white">Sinapsis</h2>
+									<span class="text-muted">Sistema Básico</span>
+								</div>						
+							</div>
+							<div class="my-5">																
+								<div class="d-inline-block mr-3">
+									<h2 class="text-white">SINAPSIS+</h2>
+									<span class="text-muted">Sistema Completo</span>
+								</div>								
+							</div>
+							
+						</div>
+						<div class="col-xl-6 ml-auto d-none d-xl-block">
+							<div class="landing-intro-img">
+
+								<img src="{{url_for('static', filename='/img/screenshots/Fondo1_Sinapsis2.png')}}" width="550" height="550" style="border-radius: 20px;" alt="Analytics SELECTIVA Theme" />								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="py-5">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 col-xl-6 mx-auto">
+					<h2 class="h1 mb-3">
+						Unase a nuestro gran equipo de clientes y empiece a administrar integralmente los procesos de su organización
+					</h2>
+					<a href="https://www.selectiva.net.co/" target="_blank" class="align-middle btn btn-primary btn-lg mt-n1">Contratación</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="{{url_for('static', filename='/js/app.js')}}"></script>
+
+</body>
+
+</html>

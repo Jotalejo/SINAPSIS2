@@ -1,0 +1,433 @@
+{% extends 'layoutj_3TH.html.' %}
+{% block title %}:: SINAPSIS V 2.0 :: Direccionamiento Estratégico{% endblock %}
+{% block head %}
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Plan de Desarrollo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+    </style>
+{{ super() }}
+
+{% endblock %}
+
+<body class="font-opensans">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+    </div>
+</div>
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<br><br>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>       
+    </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<h1 style="margin-left: 18px;">Marco Filosófico</h1><br>
+
+<h1 style="font: bold;">Prueba pa PHP</h1><br>
+
+<!-- <form action="" method="POST"> -->
+
+    <div class="form-section">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12 col-lg-6 col-xl-3">
+                    <div class="card">
+                        <center>
+                            <h3 id="nicknemp" style="color: red;">{{nickn}}</h3>
+                        </center>
+                        <h2 style="font-size: x-large;">Direccionamiento Estratégico</h2><br>
+                        <form action="/Add_direst" method="POST">
+                            {% for direst in eldire %}                                         
+                            <div class="form-group">
+                                <label class="form-label" style="margin-left: 10px;">Fecha</label>
+                                <input type="date" name="fecdirest" id="fecdirest" class="form-control" style="width: min-content; margin-left: 10px;" data-mask="00/00/0000" data-mask-clearifnotmatch="true" placeholder="DD/MM/AAAA" value="{{ direst.4 }}"/>
+                            </div>
+                            <label for="mision" style="margin-left: 10px;">Misión</label>
+                            <textarea id="mision" name="mision" rows="3" disabled>{{ direst.1 }}</textarea>
+                            <label for="vision" style="margin-left: 10px;">Visión</label>
+                            <textarea id="vision" name="vision" rows="3" disabled>{{ direst.2 }}</textarea>
+                            {% endfor %}
+                            <button type="submit" id="grabdire" class="btn btn-success" onclick=""><i class="fa fa-save"></i>  Grabar</button>
+                            
+                        </form>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="EditaValor" tabindex="-1" aria-labelledby="ModalValoresLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="/Update_val" method="POST">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Direccionamiento Estratégico</h1>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close">x</button>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea class="form-control titv" rows="1" placeholder="Mision" name="titv" required></textarea>
+                                    <textarea class="form-control descv" rows="3" cols="40" placeholder="Visión" name="descv" required></textarea>
+                                    <input type="hidden" name="id" class="id">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                                        <i class="fa fa-close"></i> Cerrar
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-save"></i> Grabar cambios
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+                <div class="card-body" ><br>
+                    <div id="wizard_horizontal">
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                var wizard1 = document.getElementById('wizard_horizontal');
+                                wizard1.style.minHeight = "400px"; // Ajusta la altura mínima a 400px
+                            });
+                        </script>
+                        <h2 >Valores</h2>
+                        <section>
+                            <div class="container-fluid">
+                                <div class="row clearfix">
+                                    <div class="col-md-15">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="card">                                                    
+                                                    <div class="card-body" style="height: 250px;">
+                                                        <div class="form-group" style="display:block;" id="val1">
+                                                            <form action="/Add_valores" method="POST">                                                            
+                                                                <textarea class="form-control" rows="1" placeholder="Título del valor" name="titv" id="titv" required></textarea>
+                                                                <textarea class="form-control" rows="3" cols="40" placeholder="Descripción del Valor" name="descv" id="descv" required></textarea><br>
+                                                                <button type="submit" id="grabvr" class="btn btn-success" onclick=""><i class="fa fa-save"></i>  Grabar</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="card">                                                    
+                                                    <div class="card-header">                                                        
+                                                        <h3 class="card-title" style="font-weight: bold;">Editar Valores</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table table-striped table-bordered bg-white table-sm">                                                            
+                                                            <thead>
+                                                                <tr>
+                                                                    <td style="font-weight: bold;">Título del Valor</td>
+                                                                    <td style="font-weight: bold;">Descripción</td>
+                                                                    <td style="font-weight: bold;">Operaciones</td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for valor in losva %}
+                                                                    <tr>
+                                                                        <td>{{ valor.1 }}</td>
+                                                                        <td>{{ valor.2 }}</td>
+                                                                        <td>
+                                                                            <button type="button" id="editv" name="editv" class="btn btn-success" data-toggle="modal" data-target="#EditaValor" data-titv="{{ valor.1 }}" data-descv="{{ valor.2 }}" data-id="{{ valor.0 }}"><i class="fa fa-pencil"></i> Editar</button>
+                                                                            <a href="/Delete_val/{{valor.0}}"><button type="submit" id="borrav" class="btn btn-danger"><i class="fa fa-trash"></i> Borrar</button></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </section>
+                        <!-- Modal -->
+                            <div class="modal fade" id="EditaValor" tabindex="-1" aria-labelledby="ModalValoresLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="/Update_val" method="POST">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Valores</h1>
+                                                <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close">x</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <textarea class="form-control" rows="1" placeholder="Título del valor" name="titv" id="titv" required></textarea>
+                                                <textarea class="form-control" rows="3" cols="40" placeholder="Descripción del Valor" name="descv" id="descv" required></textarea>
+                                                <input type="hidden" name="id" id="id" value="">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i> Cerrar</button>
+                                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Grabar cambios</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Modal -->
+
+                            <!-- Script to populate modal with data -->
+                            <script>
+                                $('#EditaValor').on('show.bs.modal', function (event) {
+                                    var button = $(event.relatedTarget); // Button that triggered the modal
+                                    var titv = button.data('titv'); // Extract info from data-* attributes
+                                    var descv = button.data('descv');
+                                    var id = button.data('id');
+
+                                    // Update the modal's content.
+                                    var modal = $(this);
+                                    modal.find('.modal-body #titv').val(titv);
+                                    modal.find('.modal-body #descv').val(descv);
+                                    modal.find('.modal-body #id').val(id);
+                                });
+                            </script>
+
+                        <h2>Políticas</h2>
+                        <section>
+                            <div class="container-fluid">
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Políticas Institucionales</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group" style="display:block;" id="polit1">
+                                                    <textarea class="form-control" rows="1" placeholder="Nombre" name="nompoli" id="nompoli" required></textarea>
+                                                    <textarea class="form-control" rows="3" cols="40" placeholder="Título de la política" name="titpoli" id="titpoli" required></textarea>                                                    
+                                                    <button type="button" id="planeac" class="btn btn-success" onclick=""><i class="fa fa-eye"></i> Plan</button>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group" id="valork">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" id="kusak" class="btn btn-success" onclick="return otrodato('#valork','Nombre','Título de la política','1');"><i class="fa fa-plus"></i> Agrega Política</button>
+                                                <br><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <h2>Principios</h2>
+                        <section>
+                            <div class="container-fluid">
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Principios Institucionales</h3>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="form-group" style="display:block;" id="ppio1">
+                                                    <textarea class="form-control" rows="1" placeholder="Nombre" required></textarea>
+                                                    <textarea class="form-control" rows="3" cols="40" placeholder="Título del principio" required></textarea>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group" id="valorl">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" id="kusal" class="btn btn-success" onclick="return otrodato('#valorl','Nombre','Título del principio','0');"><i class="fa fa-plus"></i> Agrega Principio</button>
+                                                <br><br>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+   <!--  <input type="submit" value="Enviar"> -->
+
+<!-- </form> -->
+
+<!-- JOTALEJO - Almacen de SCRIPTS para pasar a libreria .js -->
+
+<!-- Agregar un par de cajas para capturar datos y borrarlas -->
+
+    <script>
+        var arrCausas =  new Array();
+        var arrCausas1 =  new Array();
+        
+        function otrodato(eltags,dainic,datotro, botonj2) {
+            const tar = document.createElement('textarea');					
+            tar.className = 'form-control';
+            var aleatj = Math.floor(Math.random() * (100 - 1)) + 1
+            var nomtex = 'identc'+aleatj;
+            tar.name = nomtex;
+            tar.id = nomtex;
+            tar.placeholder = dainic;
+            tar.rows = '1';
+            tar.cols= '96';
+            document.querySelector(eltags).append(tar);
+            arrCausas[arrCausas.length] = nomtex;
+            
+            const tarja = document.createElement('textarea');
+            tarja.className = 'form-control';
+            var nomtex1 = 'idenfuen'+aleatj;
+            tarja.name = nomtex1;
+            tarja.id = nomtex1;
+            tarja.placeholder = datotro;
+            tarja.rows = '3';
+            tarja.cols= '96';
+            document.querySelector(eltags).append(tarja);
+            arrCausas1[arrCausas1.length] = nomtex1;
+            
+            const but = document.createElement('button');
+            but.className = 'btn btn-success';
+            var nombot = 'butt'+aleatj;
+            but.name = nombot;
+            but.id = nombot;
+            document.querySelector(eltags).append(but);
+                                    
+            var nombot1 = 'butt'+aleatj;
+            var nomtexA1 = 'identc'+aleatj;
+            var nomtexA2 = 'idenfuen'+aleatj;
+            
+            if (botonj2==1) {
+                const but1 = document.createElement('button');
+                but1.className = 'btn btn-success';
+                var nombotj = 'butt1'+aleatj;
+                but1.name = nombotj;
+                but1.id = nombotj;
+                document.querySelector(eltags).append(but1);
+            }
+
+            var onkl1 = 'return vuelacausa(';
+
+            if (botonj2==1) {
+                var onkl2 = onkl1+"'#"+nomtexA1+"','#"+nombot1+"','#"+nombotj+"','#"+nomtexA2+"','1');";    
+            } else {
+                var onkl2 = onkl1+"'#"+nomtexA1+"','#"+nombot1+"','0','#"+nomtexA2+"','0');";
+            }
+            
+            if (botonj2==1) {
+                var botoncito = document.getElementById(nombot1);
+                botoncito.onclick = function() {
+                    return vuelacausa('#'+nomtexA1 , '#'+nombot1 , '#'+nombotj , '#'+nomtexA2 , '1' );
+                }
+            } else {
+                var botoncito = document.getElementById(nombot1);
+                botoncito.onclick = function() {
+                    return vuelacausa('#'+nomtexA1 , '#'+nombot1 , '0', '#'+nomtexA2 , '0' );
+                }
+            }
+
+            if (botonj2==1) {
+                var botoncito1 = document.getElementById(nombot2);
+                botoncito1.onclick = function() {
+                    alert("Este es un mensaje en pantalla.");  //Acá va el llamado a los Planes
+                }                
+            } else {
+                
+            }
+                      
+            butmasi = "#"+nombot1;
+            const masi = document.createElement('i');
+            masi.className='fa fa-trash';
+            document.querySelector(butmasi).append(masi);
+            
+            if (botonj2==1) {
+                butmasi1 = "#"+nombotj;
+                const masi1 = document.createElement('i');
+                masi1.className='fa fa-eye';
+                document.querySelector(butmasi1).append(masi1);
+            }             
+            
+            return false;
+        }
+    </script>
+
+    <!-- Permite eliminar los TextAreas creados -->
+    <script>
+        function vuelacausa(eltextA, elbutT, elbutT2, elSelC, botonj3 ) {					
+            var divRemove = document.querySelector(eltextA);
+            divRemove.remove();
+
+            var iRemove = document.querySelector(elbutT);
+            iRemove.remove();
+
+            var selRemove = document.querySelector(elSelC);
+            selRemove.remove();
+
+            if (botonj3==1) {
+                var iRemove = document.querySelector(elbutT2);
+                iRemove.remove();
+            }
+                                
+            let eltextAvo = eltextA.slice(1);					
+            var lacaufly = (element) => element === eltextAvo;
+            var indcaufly = arrCausas.findIndex(lacaufly);
+            arrCausas.splice(indcaufly, 1);
+
+            let elselAvo = elSelC.slice(1);					
+            var elselfly = (element) => element === elselAvo;
+            var indselfly = arrCausas1.findIndex(elselfly);
+            arrCausas1.splice(indselfly, 1);
+            
+            return false;
+        }
+    </script>
+
+{{ super() }}
+
+</body>
+
+{% endblock %}

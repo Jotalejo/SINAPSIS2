@@ -1,0 +1,457 @@
+{% extends 'layoutj_3TH.html' %}
+{% block title %}:: SINAPSIS V 2.0 :: Proyectos{% endblock %}
+{% block head %}
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - Cronograma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+    </style>
+{{ super() }}
+
+{% endblock %}
+
+<body class="font-opensans">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+    </div>
+</div>
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<br><br>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>       
+    </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<h1 style="margin-left: 18px;">Proyectos - Cronograma</h1>
+<center>
+    <h3 id="nicknemp" style="color: red;">{{nickn}}</h3>
+</center>
+
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="col-12">
+            <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-creapR-tab" data-toggle="pill" href="#pills-creapR" role="tab" aria-controls="pills-creapR" aria-selected="false">Crear nuevo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-timeline-tab" data-toggle="pill" href="#pills-timeline" role="tab" aria-controls="pills-timeline" aria-selected="true">Lista</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-tarjetpR-tab" data-toggle="pill" href="#pills-tarjeta" role="tab" aria-controls="pills-tarjeta" aria-selected="false">Tarjeta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-tablepR-tab" data-toggle="pill" href="#pills-tablero" role="tab" aria-controls="pills-tablero" aria-selected="true">Tablero</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-tareasPr-tab" data-toggle="pill" href="#pills-tareas" role="tab" aria-controls="pills-tareas" aria-selected="true">Tareas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-detallPr-tab" data-toggle="pill" href="#pills-detalles" role="tab" aria-controls="pills-detalles" aria-selected="true">Detalles Proyecto</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-lg-12 col-md-12">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-creapR" role="tabpanel" aria-labelledby="pills-creapR-tab">
+                    <!-- Inputmask para Proyectos - Cronograma -->
+                    <div class="row clearfix">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                    <div class="card-header bline">
+                                        <h3 class="card-title">Crear un proyecto</h3>
+                                    </div>
+                                    <div class="card-header">
+                                        <h2 class="card-title">Crear un proyecto <small>Información general <a href="" target="_blank"></a></small></h2>
+                                    </div>                            
+                                    <div class="card-body">
+                                        <div class="demo-masked-input">
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Proyecto</label>
+                                                        <input type="text" class="form-control" id="titproy" name="titproy" style="height: 60px;" placeholder="TITULO DEL PROYECTO, PLAN O PROGRAMA">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Responsable</label>
+                                                        <select class="form-control custom-select" name="tipoestr" id="tipoestr" style="height: 57px;">
+                                                            <option label="Seleccione el Responsable" selected disabled></option>
+                                                            <option>Perencejo</option>
+                                                            <option>Fulatino</option>
+                                                            <option>Perano</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <b>Fecha</b>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                        <input type="date" class="form-control datetime" style="height: 60px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <label class="form-label">Fecha Inicial</label>                            
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                        <input type="date" class="form-control datetime" style="height: 57px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <label class="form-label">Fecha de Final</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                        <input type="date" class="form-control datetime" style="height: 57px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h1 class="card-title">Actividades</h1>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <form action="/Add_persfin" method="post">
+                                                            <div class="row clearfix">
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">QUÉ</label>
+                                                                        <small>Acciones</small>
+                                                                        <input type="text" class="form-control" id="titproy" name="titproy" style="height: 57px;" placeholder="ACTIVIDAD">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">CÓMO</label>
+                                                                        <small>Asignaciones</small>
+                                                                        <input type="text" class="form-control" id="titproy" name="titproy" style="height: 57px;" placeholder="TAREA">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">CON QUÉ</label>
+                                                                        <small>Recursos</small>
+                                                                        <textarea class="form-control" rows="2" cols="40" placeholder="DEFINIR LOS RECURSOS REQUERIDOS" name="descO" id="descO" required></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">QUIÉN</label>
+                                                                        <small>Responsables</small>
+                                                                        <select class="form-control custom-select" name="tipoestr" id="tipoestr" style="height: 57px;">
+                                                                            <option label="Seleccione el Responsable" selected disabled></option>
+                                                                            <option>Fulatino</option>
+                                                                            <option>Perano</option>
+                                                                            <option>Perencejo</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <label class="form-label">CUANDO</label>
+                                                                    <small>Iniciar</small>                                            
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                                        </div>
+                                                                        <input type="date" class="form-control datetime" style="height: 57px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <label class="form-label">Fecha de Final</label>
+                                                                    <small>Terminar</small>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                                        </div>
+                                                                        <input type="date" class="form-control datetime" style="height: 57px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row clearfix">
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <label class="form-label">Fecha de Seguimiento 1</label>
+                                                                    <small>Primer Seguimiento</small>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                                        </div>
+                                                                        <input type="date" class="form-control datetime" style="height: 57px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">QUIÉN HACE EL SEGUIMIENTO 1</label>
+                                                                        <small>Responsable</small>
+                                                                        <select class="form-control custom-select" name="tipoestr" id="tipoestr" style="height: 57px;">
+                                                                            <option label="Seleccione el Responsable" selected disabled></option>                                                                                            
+                                                                            <option>Perencejo</option>
+                                                                            <option>Fulatino</option>
+                                                                            <option>Perano</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">CREAR MÁS SEGUIMIENTOS</label>
+                                                                        <small>Adicionar</small><br>
+                                                                        <button type="button" id="grabO" class="btn btn-success" onclick="" style="height: 57px; width: 200px;"><i class="fa fa-plus"></i>  Agregar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row clearfix">
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">INDICADORES</label>
+                                                                        <small>Definir</small>
+                                                                        <textarea class="form-control" rows="4" cols="40" placeholder="DEFINIR EL INDICADOR DE MEDICION DE LA ACTIVIDAD" name="descO" id="descO" required></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">ENTREGABLES</label>
+                                                                        <div class="card">
+                                                                            <div class="card-header">
+                                                                                <h3 class="card-title"><small>Cargar Entregable</small></h3>
+                                                                            </div>
+                                                                            <div class="card-body">
+                                                                                <input type="file" class="dropify">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" id="grabO" class="btn btn-success" onclick=""><i class="fa fa-save"></i>  Grabar</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="tab-pane fade" id="pills-timeline" role="tabpanel" aria-labelledby="pills-timeline-tab">
+                    <div class="card">
+                        <div class="card-header bline">
+                            <h3 class="card-title">Lista</h3>
+                            <div class="card-options">
+                                <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
+                                <div class="item-action dropdown ml-2">
+                                    <a href="javascript:void(0)" data-toggle="dropdown"><i class="fe fe-more-vertical"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>                                            
+                                <div class="dropdown-divider"></div>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+
+<!-- JOTALEJO - Almacen de SCRIPTS para pasar a libreria .js -->
+
+<!-- Agregar un par de cajas para capturar datos y borrarlas -->
+
+    <script>
+        var arrCausas =  new Array();
+        var arrCausas1 =  new Array();
+        
+        function otrodato(eltags,dainic,datotro, botonj2) {
+            const tar = document.createElement('textarea');					
+            tar.className = 'form-control';
+            var aleatj = Math.floor(Math.random() * (100 - 1)) + 1
+            var nomtex = 'identc'+aleatj;
+            tar.name = nomtex;
+            tar.id = nomtex;
+            tar.placeholder = dainic;
+            tar.rows = '1';
+            tar.cols= '96';
+            document.querySelector(eltags).append(tar);
+            arrCausas[arrCausas.length] = nomtex;
+            
+            const tarja = document.createElement('textarea');
+            tarja.className = 'form-control';
+            var nomtex1 = 'idenfuen'+aleatj;
+            tarja.name = nomtex1;
+            tarja.id = nomtex1;
+            tarja.placeholder = datotro;
+            tarja.rows = '3';
+            tarja.cols= '96';
+            document.querySelector(eltags).append(tarja);
+            arrCausas1[arrCausas1.length] = nomtex1;
+            
+            const but = document.createElement('button');
+            but.className = 'btn btn-success';
+            var nombot = 'butt'+aleatj;
+            but.name = nombot;
+            but.id = nombot;
+            document.querySelector(eltags).append(but);
+                                    
+            var nombot1 = 'butt'+aleatj;
+            var nomtexA1 = 'identc'+aleatj;
+            var nomtexA2 = 'idenfuen'+aleatj;
+            
+            if (botonj2==1) {
+                const but1 = document.createElement('button');
+                but1.className = 'btn btn-success';
+                var nombotj = 'butt1'+aleatj;
+                but1.name = nombotj;
+                but1.id = nombotj;
+                document.querySelector(eltags).append(but1);
+            }
+
+            var onkl1 = 'return vuelacausa(';
+
+            if (botonj2==1) {
+                var onkl2 = onkl1+"'#"+nomtexA1+"','#"+nombot1+"','#"+nombotj+"','#"+nomtexA2+"','1');";    
+            } else {
+                var onkl2 = onkl1+"'#"+nomtexA1+"','#"+nombot1+"','0','#"+nomtexA2+"','0');";
+            }
+            
+            if (botonj2==1) {
+                var botoncito = document.getElementById(nombot1);
+                botoncito.onclick = function() {
+                    return vuelacausa('#'+nomtexA1 , '#'+nombot1 , '#'+nombotj , '#'+nomtexA2 , '1' );
+                }
+            } else {
+                var botoncito = document.getElementById(nombot1);
+                botoncito.onclick = function() {
+                    return vuelacausa('#'+nomtexA1 , '#'+nombot1 , '0', '#'+nomtexA2 , '0' );
+                }
+            }
+
+            if (botonj2==1) {
+                var botoncito1 = document.getElementById(nombot2);
+                botoncito1.onclick = function() {
+                    alert("Este es un mensaje en pantalla.");  //Acá va el llamado a los Planes
+                }                
+            } else {
+                
+            }
+                      
+            butmasi = "#"+nombot1;
+            const masi = document.createElement('i');
+            masi.className='fa fa-trash';
+            document.querySelector(butmasi).append(masi);
+            
+            if (botonj2==1) {
+                butmasi1 = "#"+nombotj;
+                const masi1 = document.createElement('i');
+                masi1.className='fa fa-eye';
+                document.querySelector(butmasi1).append(masi1);
+            }             
+            
+            return false;
+        }
+    </script>
+
+    <!-- Permite eliminar los TextAreas creados -->
+    <script>
+        function vuelacausa(eltextA, elbutT, elbutT2, elSelC, botonj3 ) {					
+            var divRemove = document.querySelector(eltextA);
+            divRemove.remove();
+
+            var iRemove = document.querySelector(elbutT);
+            iRemove.remove();
+
+            var selRemove = document.querySelector(elSelC);
+            selRemove.remove();
+
+            if (botonj3==1) {
+                var iRemove = document.querySelector(elbutT2);
+                iRemove.remove();
+            }
+                                
+            let eltextAvo = eltextA.slice(1);					
+            var lacaufly = (element) => element === eltextAvo;
+            var indcaufly = arrCausas.findIndex(lacaufly);
+            arrCausas.splice(indcaufly, 1);
+
+            let elselAvo = elSelC.slice(1);					
+            var elselfly = (element) => element === elselAvo;
+            var indselfly = arrCausas1.findIndex(elselfly);
+            arrCausas1.splice(indselfly, 1);
+            
+            return false;
+        }
+    </script>
+
+{{ super() }}
+
+</body>
+
+{% endblock %}
