@@ -28,6 +28,8 @@ import os
 # Variables Globales
 dataqryCtxt = ""
 
+load_dotenv()
+
 app = Flask(__name__)
 # MySQL Connection :
 app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
@@ -35,6 +37,11 @@ app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
 app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
 app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
 
+strConnection = "mysql://{user}:{pwd}@{host}/{db}".format(user = os.getenv('MYSQL_USER'), pwd = os.getenv('MYSQL_PASSWORD'), host = os.getenv('MYSQL_HOST'), db = os.getenv('MYSQL_DB'))
+
+print (strConnection)
+
+auth = Auth(strConnection)
 
 mysql = MySQL(app)
 
@@ -49,7 +56,7 @@ app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # o 'Strict'
 
-auth = Auth('mysql://root:Sire5997_2024*.@localhost/snpsis2db')
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'signja'
