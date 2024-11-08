@@ -22,18 +22,20 @@ from datetime import datetime, timedelta
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 from Auth import Auth
 from Auth import Company
-
+from dotenv import load_dotenv
+import os
 
 # Variables Globales
 dataqryCtxt = ""
 
 app = Flask(__name__)
-
 # MySQL Connection :
-app.config['MYSQL_HOST']='localhost'
-app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='Sire5997_2024*.'
-app.config['MYSQL_DB']='snpsis2db'
+app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
+app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
+app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
+
+
 mysql = MySQL(app)
 
 # Settings
