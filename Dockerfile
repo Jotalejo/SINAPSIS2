@@ -5,4 +5,4 @@ WORKDIR /app
 COPY requirements.txt /app
 RUN pip install --upgrade pip setuptools && pip install -r requirements.txt
 COPY . /app
-CMD ["python", "app.py"]
+CMD ["python", "App.py"]
