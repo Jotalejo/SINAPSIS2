@@ -1,5 +1,5 @@
 services:
-  web:
+  web-sinapsis2:
     build: 
       context: .
       dockerfile: Dockerfile
