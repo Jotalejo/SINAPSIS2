@@ -4,19 +4,20 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-    - DB_URL=${DB_URL}
     - DOMAIN=${DOMAIN}
     - MYSQL_HOST=${MYSQL_HOST}
     - MYSQL_USER=${MYSQL_USER}
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     - MYSQL_DB=${MYSQL_DB}
     restart: always
+    ports:
+      - "3003:3003"    
     labels:
       - traefik.enable=true
       - traefik.http.routers.project1-https.rule=Host(`${DOMAIN}`)
       - traefik.http.routers.project1-https.tls=true
       - traefik.http.routers.project1-https.tls.certresolver=le
-      - traefik.http.services.project1-service.loadbalancer.server.port=8000
+      - traefik.http.services.project1-service.loadbalancer.server.port=3003
     networks:
       - traefik-public
     extra_hosts:
