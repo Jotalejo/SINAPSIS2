@@ -35,10 +35,15 @@ class Company(Base):
     id: Mapped[int] = mapped_column("codemp_emp", primary_key = True)
     name: Mapped[str] = mapped_column("nomemp_emp", String(70))
     nit: Mapped[str] = mapped_column("nit_emp", String(15))
+    nname: Mapped[str] = mapped_column("nickname_emp", String(45))
     tenant: Mapped[str] = mapped_column("basedd_emp", String(45))
 
-    def check_idempr(self, id):
-        return self.id == id
+#    def check_idempr(self, id):
+#        return self.id == id        
+
+    def check_idempr(self, id, session):
+    # Busca en la base de datos si el ID coincide
+        return session.query(Company).filter(Company.id == id).first()
         
 class User(Base, UserMixin):
     __tablename__ = "usuarios"

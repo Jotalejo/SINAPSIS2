@@ -22,27 +22,18 @@ from datetime import datetime, timedelta
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 from Auth import Auth
 from Auth import Company
-from dotenv import load_dotenv
-import os
+
 
 # Variables Globales
 dataqryCtxt = ""
 
-load_dotenv()
-
 app = Flask(__name__)
+
 # MySQL Connection :
-app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
-app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
-app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
-app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
-
-strConnection = "mysql://{user}:{pwd}@{host}/{db}".format(user = os.getenv('MYSQL_USER'), pwd = os.getenv('MYSQL_PASSWORD'), host = os.getenv('MYSQL_HOST'), db = os.getenv('MYSQL_DB'))
-
-print (strConnection)
-
-auth = Auth(strConnection)
-
+app.config['MYSQL_HOST']='localhost'
+app.config['MYSQL_USER']='root'
+app.config['MYSQL_PASSWORD']='Sire5997_2024*.'
+app.config['MYSQL_DB']='snpsis2db'
 mysql = MySQL(app)
 
 # Settings
@@ -56,7 +47,7 @@ app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # o 'Strict'
 
-
+auth = Auth('mysql://root:Sire5997_2024*.@localhost/snpsis2db')
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'signja'
@@ -404,10 +395,11 @@ def plandes():
 
     # Verificar el ID de la empresa usando el método check_idempr
     # Reemplaza `id` con el valor que obtengas del contexto de la aplicación
-    emprusu1 = company_instance.check_idempr(id)
+#    emprusu1 = company_instance.check_idempr(id)
 
     curempr1 = mysql.connection.cursor()
-    curempr1.execute( "SELECT * FROM empresas where codemp_emp = %s", (emprusu1,))
+    #curempr1.execute( "SELECT * FROM empresas where codemp_emp = %s", (emprusu1,))
+    curempr1.execute( "SELECT * FROM empresas where codemp_emp = 4" )
     dataempr1 = curempr1.fetchall()
     curempr1.close()
     nickn1=dataempr1[0][28]
@@ -516,6 +508,9 @@ def creasol():
     curlosTes.execute("SELECT * FROM estrategiatipos")
     datalosTes = curlosTes.fetchall()
 
+    # Obtener el ID de la empresa desde la sesión
+    company_id = session.get('emprusu')
+
     id = session.get('emprusu')
 
     # Instanciar la clase Company
@@ -523,13 +518,30 @@ def creasol():
 
     # Verificar el ID de la empresa usando el método check_idempr
     # Reemplaza `id` con el valor que obtengas del contexto de la aplicación
-    emprusu1 = company_instance.check_idempr(id)
+    #emprusu1 = company_instance.check_idempr(id)
+    #print('Hola acá es :')
+    #print(emprusu1)
 
     curempr1 = mysql.connection.cursor()
-    curempr1.execute( "SELECT * FROM empresas where codemp_emp LIKE %s", (emprusu1,))
+    curempr1.execute( "SELECT * FROM empresas where codemp_emp LIKE 4")
     dataempr1 = curempr1.fetchall()
     nickn1=dataempr1[0][28]
 
+    # Crear una instancia de SQLAlchemy Session
+    #with session(engine) as db_session:
+        # Crear una instancia de Company
+        #company_instance = Company()
+
+        # Llamar al método check_idempr
+        #company = company_instance.check_idempr(company_id, db_session)
+
+        # Verificar si se encontró la empresa
+        #if not company:
+        #    return "Empresa no encontrada", 404
+
+        # Obtener el nickname
+        #nickn1 = company.nname
+    
     curpers = mysql.connection.cursor()
     curpers.execute('SELECT * FROM perspectivas')
     datapers = curpers.fetchall()

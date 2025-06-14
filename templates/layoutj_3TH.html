@@ -9,7 +9,7 @@
 
 <title>{% block title %} :: SINAPSIS V 2.0 :: Admin {% endblock %}</title>
 
-<link rel="icon" href="{{url_for('static', filename='img/avatars/Ic_Sinap_sf.png')}}">
+<link rel="icon" href="{{url_for('static', filename='/img/avatars/Ic_Sinap_sf.png')}}">
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
 <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='img/favicons/sinap_favicon-32x32_sf.png')}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='/img/favicons/sinap_favicon-32x32_sf.png')}}">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/manifest.json">
@@ -30,21 +30,21 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- Bootstrap Core and vandor -->
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/bootstrap/css/bootstrap.min.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/bootstrap/css/stylesJAP.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/jquery-steps/jquery.steps.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/multi-select/css/multi-select.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/dropify/css/dropify.min.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/bootstrap/css/bootstrap.min.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/bootstrap/css/stylesJAP.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/jquery-steps/jquery.steps.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/multi-select/css/multi-select.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/dropify/css/dropify.min.css')}}"/>
 
 <!-- Plugins css -->
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/charts-c3/c3.min.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/plugins/jvectormap/jvectormap-2.0.3.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/charts-c3/c3.min.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/plugins/jvectormap/jvectormap-2.0.3.css')}}"/>
 
 <!-- Core css -->
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/assets/css/main.css')}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='crush-on/theme1/assets/css/theme1.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/assets/css/main.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='/crush-on/theme1/assets/css/theme1.css')}}"/>
 {% endblock %}
 </head>
 
@@ -436,11 +436,11 @@ Alternar cuadrícula y lista"></i></a></h5>
             <ul class="metismenu">
                 <li class="g_heading">Directorio</li>
                 <li class="active"><a href="/inicio"><i class="icon-home"></i><span>Inicio</span></a></li>                        
-                <li><a href="app-calendar.html"><i class="icon-calendar"></i><span>Calendario</span></a></li>
-                <li style="display: block;"><a href="app-chat.html"><i class="icon-speech"></i><span>Chat</span></a></li>
-                <li style="display: block;"><a href="app-contact.html"><i class="icon-notebook"></i><span>Contactos</span></a></li>
+                <li><a href="app-calendar.html"><i class="icon-calendar"></i><span>Cronograma</span></a></li>
+                <li style="display: block;"><a href="app-chat.html"><i class="icon-speech"></i><span>Proyectos</span></a></li>
+                <li style="display: block;"><a href="app-contact.html"><i class="icon-users"></i><span>Comités</span></a></li>
                 <li>
-                    <a href="javascript:void(0)" class="has-arrow"><i class="icon-bar-chart"></i><span>Gráficas</span></a>
+                    <a href="javascript:void(0)" class="has-arrow"><i class="icon-bar-chart"></i><span>Indicadores</span></a>
                     <ul>
                         <li><a href="charts-apex.html">Resumen Inicial</a></li>                        
                     </ul>
@@ -451,30 +451,37 @@ Alternar cuadrícula y lista"></i></a></h5>
                     <a href="javascript:void(0)" class="has-arrow"><i class="icon-layers"></i><span>Direccionamiento</span></a>
                     <ul>
                         <li><a href="/plandes">Direccionamiento Estratégico</a></li>
-                        <li><a href="/creasol">Crear Plan de Desarrollo</a></li>                        
-                    </ul>
-                </li>
-                <li style="display: block;">
-                    <a href="javascript:void(0)" class="has-arrow"><i class="icon-tag"></i><span>Tablero de Control</span></a>
-                    <ul>
-                        <li><a href="table-normal.html">Bootstrap Table</a></li>
-                        <li><a href="table-datatable.html">Jquery Datatable</a></li>
+                        <li><a href="/creasol">Planeación Estrategica</a></li>                        
                     </ul>
                 </li>                
                 <li style="display: block;">
                     <a href="javascript:void(0)" class="has-arrow"><i class="icon-check"></i><span>Tareas</span></a>
                     <ul>
-                        <li><a href="">Todolist</a></li>                        
+                        <li style="display: block;">
+                            <a href="javascript:void(0)" class="has-arrow"><i class="icon-tag"></i><span>Tablero de Control</span></a>
+                            <ul>
+                                <li><a href="table-normal.html">Bootstrap Table</a></li>
+                                <li><a href="table-datatable.html">Jquery Datatable</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Todolist</a></li>
                     </ul>
                 </li>
                 <li style="display: block;">
-                    <a href="javascript:void(0)" class="has-arrow"><i class="icon-puzzle"></i><span>Procesos</span></a>
+                    <a href="javascript:void(0)" class="has-arrow"><i class="icon-puzzle"></i><span>Gestion por Procesos</span></a>
                     <ul>
-                        <li><a href="">Proyecto</a></li>
+                        <li><a href="">Caracterización y Documentación</a></li>
+                        <li><a href="">Documentos de los Procesos</a></li>
+                            <ul>    
+                                <li><a href="">Internos</a></li>
+                                <li><a href="">Externos</a></li>
+                                <li><a href="">Registro</a></li>
+                            </ul>
+                        <li><a href="">Pirámide Documental</a></li>
                     </ul>
                 </li>
                 <li style="display: block;">
-                    <a href="javascript:void(0)" class="has-arrow"><i class="icon-users"></i><span>Comités</span></a>
+                    <a href="javascript:void(0)" class="has-arrow"><i class="icon-notebook"></i><span>Gestión Humana</span></a>
                     <ul>
                         <li><a href="">Reunión</a></li>
                     </ul>
@@ -664,19 +671,19 @@ Alternar cuadrícula y lista"></i></a></h5>
     </div>    
 </div>
 
-<script src="{{url_for('static', filename='crush-on/assets/bundles/lib.vendor.bundle.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/assets/bundles/lib.vendor.bundle.js')}}"></script>
 
-<script src="{{url_for('static', filename='crush-on/assets/bundles/counterup.bundle.js')}}"></script>
-<script src="{{url_for('static', filename='crush-on/assets/bundles/jvectormap1.bundle.js')}}"></script>
-<script src="{{url_for('static', filename='crush-on/assets/bundles/c3.bundle.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/assets/bundles/counterup.bundle.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/assets/bundles/jvectormap1.bundle.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/assets/bundles/c3.bundle.js')}}"></script>
 
-<script src="{{url_for('static', filename='crush-on/assets/js/jota.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/assets/js/jota.js')}}"></script>
 
-<script src="{{url_for('static', filename='crush-on/assets/plugins/jquery-steps/jquery.steps.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/assets/plugins/jquery-steps/jquery.steps.js')}}"></script>
 
-<script src="{{url_for('static', filename='crush-on/assets/js/core.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/assets/js/core.js')}}"></script>
 
-<script src="{{url_for('static', filename='crush-on/theme1/assets/js/page/index.js')}}"></script>
-<script src="{{url_for('static', filename='crush-on/theme1/assets/js/form/wizard.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/theme1/assets/js/page/index.js')}}"></script>
+<script src="{{url_for('static', filename='/crush-on/theme1/assets/js/form/wizard.js')}}"></script>
 
 </html>
