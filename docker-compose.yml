@@ -14,10 +14,10 @@ services:
       - "3003:3003"    
     labels:
       - traefik.enable=true
-      - traefik.http.routers.project1-https.rule=Host(`${DOMAIN}`)
-      - traefik.http.routers.project1-https.tls=true
-      - traefik.http.routers.project1-https.tls.certresolver=le
-      - traefik.http.services.project1-service.loadbalancer.server.port=3003
+      - traefik.http.routers.sinapsisv2-https.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.sinapsisv2-https.tls=true
+      - traefik.http.routers.sinapsisv2-https.tls.certresolver=le
+      - traefik.http.services.sinapsisv2-service.loadbalancer.server.port=3003
     networks:
       - traefik-public
     extra_hosts:
