@@ -55,7 +55,6 @@ app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # o 'Strict'
 
-auth = Auth('mysql://root:Sire5997_2024*.@localhost/snpsis2db')
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'signja'
