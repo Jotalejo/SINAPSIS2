@@ -14,10 +14,10 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.http.routers.sinapsis2-http.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.sinapsis2-https.rule=Host(`${DOMAIN}`)
       - traefik.http.routers.sinapsis2-https.tls=true
       - traefik.http.routers.sinapsis2-https.tls.certresolver=le
-      - traefik.http.services.sinapsis2.loadbalancer.server.port=3003
+      - traefik.http.services.sinapsis2-service.loadbalancer.server.port=3003
     networks:
       - traefik-public
     extra_hosts:
