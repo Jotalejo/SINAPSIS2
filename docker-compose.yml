@@ -1,6 +1,6 @@
 services:
-  web-sinapsis2:
-    build: 
+  sinapsis2:
+    build:
       context: .
       dockerfile: Dockerfile
     environment:
@@ -9,15 +9,15 @@ services:
     - MYSQL_USER=${MYSQL_USER}
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     - MYSQL_DB=${MYSQL_DB}
-    restart: always
     ports:
-      - "3003:3003"    
+    - "3003:3003"
+    restart: always
     labels:
       - traefik.enable=true
-      - traefik.http.routers.sinapsisv2-https.rule=Host(`${DOMAIN}`)
-      - traefik.http.routers.sinapsisv2-https.tls=true
-      - traefik.http.routers.sinapsisv2-https.tls.certresolver=le
-      - traefik.http.services.sinapsisv2-service.loadbalancer.server.port=3003
+      - traefik.http.routers.sinapsis2-http.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.sinapsis2-https.tls=true
+      - traefik.http.routers.sinapsis2-https.tls.certresolver=le
+      - traefik.http.services.sinapsis2.loadbalancer.server.port=3003
     networks:
       - traefik-public
     extra_hosts:
@@ -25,4 +25,4 @@ services:
 
 networks:
   traefik-public:
-    external: true  
+    external: true

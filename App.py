@@ -778,7 +778,7 @@ def add_DatBas():
         return redirect(url_for('medic'))
 
 if __name__ == '__main__':
-    app.run(port=3003, debug=True)
+    app.run(host='0.0.0.0', port=3003, debug=True)
 
 # This is just a dummy database of users and passwords, in a real app you would use a secure database
 users = {'user1': 'password1', 'user2': 'password2'}
