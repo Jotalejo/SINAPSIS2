@@ -22,19 +22,27 @@ from datetime import datetime, timedelta
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 from Auth import Auth
 from Auth import Company
+from dotenv import load_dotenv
+import os
 
 
 # Variables Globales
 dataqryCtxt = ""
+load_dotenv()
 
 app = Flask(__name__)
 
 # MySQL Connection :
-app.config['MYSQL_HOST']='localhost'
-app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='Sire5997_2024*.'
-app.config['MYSQL_DB']='snpsis2db'
-mysql = MySQL(app)
+app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
+app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
+app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
+
+strConnection = "mysql://{user}:{pwd}@{host}/{db}".format(user = os.getenv('MYSQL_USER'), pwd = os.getenv('MYSQL_PASSWORD'), host = os.getenv('MYSQL_HOST'), db = os.getenv('MYSQL_DB'))
+
+print (strConnection)
+
+auth = Auth(strConnection)
 
 # Settings
 app.secret_key = 'mysecretkeyJAPSNP'
@@ -47,7 +55,6 @@ app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # o 'Strict'
 
-auth = Auth('mysql://root:Sire5997_2024*.@localhost/snpsis2db')
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'signja'
@@ -771,7 +778,7 @@ def add_DatBas():
         return redirect(url_for('medic'))
 
 if __name__ == '__main__':
-    app.run(port=3003, debug=True)
+    app.run(host='0.0.0.0', port=3003, debug=True)
 
 # This is just a dummy database of users and passwords, in a real app you would use a secure database
 users = {'user1': 'password1', 'user2': 'password2'}
